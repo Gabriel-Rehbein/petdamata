@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pet da Mata — Pet Shop</title>
+  <title>Pet da Mata | Pet Shop</title>
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -15,14 +15,14 @@
       <div class="brand__logo" aria-hidden="true">🐾</div>
       <div class="brand__txt">
         <h1>Pet da Mata</h1>
-        <p>Sistema do Pet Shop • Cadastro & Atendimento</p>
+        <p>Banho, tosa e atendimento com cuidado</p>
       </div>
     </div>
 
     <div class="header__actions">
       <div class="searchBox">
-        <input id="q" class="searchBox__input" placeholder="Buscar por pet, raça, dono, telefone..." />
-        <span class="searchBox__icon">🔎</span>
+        <input id="q" class="searchBox__input" placeholder="Buscar pet, raça, dono, telefone ou serviço..." />
+        <span class="searchBox__icon">⌕</span>
       </div>
 
       <button id="exportBtn" class="btn btn--soft" type="button">Exportar</button>
@@ -37,114 +37,179 @@
   </div>
 </header>
 
-<main class="wrap grid">
-
-  <!-- FORM -->
-  <section class="card">
-    <div class="card__top">
-      <div class="pill" id="modePill">Modo: Novo</div>
-      <div class="pill pill--count">🐶 Pet</div>
+<main>
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <span class="eyebrow">Pet shop da vizinhança</span>
+        <h2>Atendimentos organizados para pets mais felizes.</h2>
+        <p>Cadastre clientes, acompanhe banho e tosa, veja detalhes do pet e mantenha tudo salvo no navegador.</p>
+        <div class="hero__chips" aria-label="Serviços">
+          <span>Banho</span>
+          <span>Tosa</span>
+          <span>Vacinas</span>
+          <span>Acessórios</span>
+        </div>
+      </div>
     </div>
-
-    <form id="form" class="form">
-      <h3 class="form__title">Cadastro do Pet</h3>
-
-      <div class="form__group">
-        <label class="label" for="pet_nome">Nome do pet *</label>
-        <input id="pet_nome" placeholder="Ex: Thor" required>
-      </div>
-
-      <div class="form__group">
-        <label class="label" for="pet_raca">Raça *</label>
-        <input id="pet_raca" placeholder="Ex: Shih Tzu" required>
-      </div>
-
-      <div class="row2">
-        <div class="form__group">
-          <label class="label" for="pet_idade">Idade</label>
-          <input id="pet_idade" type="number" min="0" placeholder="Ex: 3">
-        </div>
-
-        <div class="form__group">
-          <label class="label" for="pet_sexo">Sexo</label>
-          <select id="pet_sexo">
-            <option value="">Selecione</option>
-            <option value="M">M</option>
-            <option value="F">F</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row2">
-        <div class="form__group">
-          <label class="label" for="pet_peso">Peso (kg)</label>
-          <input id="pet_peso" type="number" step="0.01" min="0" placeholder="Ex: 7.50">
-        </div>
-
-        <div class="form__group">
-          <label class="label" for="pet_tipo">Tipo</label>
-          <select id="pet_tipo">
-            <option value="">Selecione</option>
-            <option value="Cão">Cão</option>
-            <option value="Gato">Gato</option>
-            <option value="Coelho">Coelho</option>
-            <option value="Outro">Outro</option>
-          </select>
-        </div>
-      </div>
-
-      <hr class="sep">
-
-      <h3 class="form__title">Dados do Cliente</h3>
-
-      <div class="form__group">
-        <label class="label" for="dono_nome">Nome do dono *</label>
-        <input id="dono_nome" placeholder="Ex: Maria Souza" required>
-      </div>
-
-      <div class="row2">
-        <div class="form__group">
-          <label class="label" for="dono_tel">Telefone *</label>
-          <input id="dono_tel" placeholder="(51) 99999-9999" required>
-        </div>
-
-        <div class="form__group">
-          <label class="label" for="dono_obs">Observações</label>
-          <input id="dono_obs" placeholder="Ex: alérgico a shampoo X">
-        </div>
-      </div>
-
-      <div class="actions">
-        <button type="submit" class="btn btn--primary">Salvar</button>
-        <button type="button" id="cancelBtn" class="btn btn--soft">Cancelar</button>
-      </div>
-
-      <p class="hint">* Campos obrigatórios</p>
-    </form>
   </section>
 
-  <!-- LIST -->
-  <section class="card">
-    <div class="toprow">
-      <div>
-        <h3 class="title">Registros</h3>
-        <p class="subtitle">Clique no nome do pet para ver detalhes</p>
-      </div>
-      <span class="pill pill--count" id="countPill">0</span>
+  <section class="wrap stats" aria-label="Resumo">
+    <div class="stat">
+      <span class="stat__label">Pets cadastrados</span>
+      <strong id="totalPets">0</strong>
     </div>
-
-    <div id="listWrap" class="listWrap"></div>
-
-    <!-- DETALHES -->
-    <aside id="detailsPanel" class="details hidden" aria-live="polite">
-      <div class="detailsHeader">
-        <strong id="detailsTitle">Detalhes</strong>
-        <button id="closeDetails" class="btn btn--ghost" type="button">Fechar</button>
-      </div>
-      <div class="detailsBody" id="detailsBody"></div>
-    </aside>
+    <div class="stat">
+      <span class="stat__label">Hoje no balcão</span>
+      <strong id="todayPets">0</strong>
+    </div>
+    <div class="stat">
+      <span class="stat__label">Prontos para buscar</span>
+      <strong id="readyPets">0</strong>
+    </div>
   </section>
 
+  <div class="wrap grid">
+    <section class="card formCard">
+      <div class="card__top">
+        <div class="pill" id="modePill">Modo: Novo</div>
+        <div class="pill pill--accent">🐶 Atendimento</div>
+      </div>
+
+      <form id="form" class="form">
+        <h3 class="form__title">Cadastro do pet</h3>
+
+        <div class="form__group">
+          <label class="label" for="pet_nome">Nome do pet *</label>
+          <input id="pet_nome" placeholder="Ex: Thor" required>
+        </div>
+
+        <div class="row2">
+          <div class="form__group">
+            <label class="label" for="pet_tipo">Tipo</label>
+            <select id="pet_tipo">
+              <option value="">Selecione</option>
+              <option value="Cão">Cão</option>
+              <option value="Gato">Gato</option>
+              <option value="Coelho">Coelho</option>
+              <option value="Pássaro">Pássaro</option>
+              <option value="Peixe">Peixe</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="form__group">
+            <label class="label" for="pet_raca">Raça *</label>
+            <input id="pet_raca" placeholder="Ex: Shih Tzu" required>
+          </div>
+        </div>
+
+        <div class="row3">
+          <div class="form__group">
+            <label class="label" for="pet_idade">Idade</label>
+            <input id="pet_idade" type="number" min="0" placeholder="3">
+          </div>
+
+          <div class="form__group">
+            <label class="label" for="pet_sexo">Sexo</label>
+            <select id="pet_sexo">
+              <option value="">-</option>
+              <option value="M">M</option>
+              <option value="F">F</option>
+            </select>
+          </div>
+
+          <div class="form__group">
+            <label class="label" for="pet_peso">Peso (kg)</label>
+            <input id="pet_peso" type="number" step="0.01" min="0" placeholder="7.50">
+          </div>
+        </div>
+
+        <hr class="sep">
+
+        <h3 class="form__title">Atendimento</h3>
+
+        <div class="row2">
+          <div class="form__group">
+            <label class="label" for="atendimento_servico">Serviço</label>
+            <select id="atendimento_servico">
+              <option value="">Selecione</option>
+              <option value="Banho">Banho</option>
+              <option value="Tosa">Tosa</option>
+              <option value="Banho e tosa">Banho e tosa</option>
+              <option value="Consulta">Consulta</option>
+              <option value="Vacina">Vacina</option>
+              <option value="Hospedagem">Hospedagem</option>
+              <option value="Loja">Loja</option>
+            </select>
+          </div>
+
+          <div class="form__group">
+            <label class="label" for="atendimento_status">Status</label>
+            <select id="atendimento_status">
+              <option value="Aguardando">Aguardando</option>
+              <option value="Em atendimento">Em atendimento</option>
+              <option value="Pronto">Pronto</option>
+              <option value="Entregue">Entregue</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form__group">
+          <label class="label" for="atendimento_data">Próxima visita</label>
+          <input id="atendimento_data" type="date">
+        </div>
+
+        <hr class="sep">
+
+        <h3 class="form__title">Dados do cliente</h3>
+
+        <div class="form__group">
+          <label class="label" for="dono_nome">Nome do dono *</label>
+          <input id="dono_nome" placeholder="Ex: Maria Souza" required>
+        </div>
+
+        <div class="row2">
+          <div class="form__group">
+            <label class="label" for="dono_tel">Telefone *</label>
+            <input id="dono_tel" placeholder="(51) 99999-9999" required>
+          </div>
+
+          <div class="form__group">
+            <label class="label" for="dono_obs">Observações</label>
+            <input id="dono_obs" placeholder="Ex: alérgico a shampoo X">
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn--primary">Salvar atendimento</button>
+          <button type="button" id="cancelBtn" class="btn btn--soft">Cancelar</button>
+        </div>
+
+        <p class="hint">* Campos obrigatórios</p>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="toprow">
+        <div>
+          <h3 class="title">Agenda e registros</h3>
+          <p class="subtitle">Clique no nome do pet para abrir a ficha</p>
+        </div>
+        <span class="pill pill--count" id="countPill">0</span>
+      </div>
+
+      <div id="listWrap" class="listWrap"></div>
+
+      <aside id="detailsPanel" class="details hidden" aria-live="polite">
+        <div class="detailsHeader">
+          <strong id="detailsTitle">Detalhes</strong>
+          <button id="closeDetails" class="btn btn--ghost" type="button">Fechar</button>
+        </div>
+        <div class="detailsBody" id="detailsBody"></div>
+      </aside>
+    </section>
+  </div>
 </main>
 
 <footer class="footer">
